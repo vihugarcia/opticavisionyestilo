@@ -134,27 +134,77 @@ class RecetaController extends Controller
             $receta->save();
         }       
 
-        $lejos = new Lejos(); 
-        $lejos->ejeOD = $request->lejos_eje_od;
-        $lejos->ejeOI = $request->lejos_eje_oi;
-        $lejos->esferaOD = $request->lejos_esfera_od; 
-        $lejos->esferaOI = $request->lejos_esfera_oi; 
-        $lejos->cilindroOD = $request->lejos_cilindro_od; 
-        $lejos->cilindroOI = $request->lejos_cilindro_oi;
-        $lejos->save(); 
-        $receta->lejos_id = $lejos->id; 
+        if(isset($request->cerca_eje_od) && isset($request->cerca_eje_od)){
+                        
+            $lejos = new Lejos(); 
+            $lejos->ejeOD = $request->lejos_eje_od;
+            $lejos->ejeOI = $request->lejos_eje_oi;
+            $lejos->esferaOD = $request->lejos_esfera_od; 
+            $lejos->esferaOI = $request->lejos_esfera_oi; 
+            $lejos->cilindroOD = $request->lejos_cilindro_od; 
+            $lejos->cilindroOI = $request->lejos_cilindro_oi;        
+            $lejos->save(); 
+            
+            $cerca = new Cerca(); 
+            $cerca->ejeOD = $request->cerca_eje_od;
+            $cerca->ejeOI = $request->cerca_eje_oi;
+            $cerca->esferaOD = $request->cerca_esfera_od; 
+            $cerca->esferaOI = $request->cerca_esfera_oi; 
+            $cerca->cilindroOD = $request->cerca_cilindro_od; 
+            $cerca->cilindroOI = $request->cerca_cilindro_oi;
+            $cerca->save(); 
+            $receta->lejos_id = $lejos->id; 
+            $receta->cerca_id = $cerca->id;
+            $receta->save();
+        }
 
-        $cerca = new Cerca(); 
-        $cerca->ejeOD = $request->cerca_eje_od;
-        $cerca->ejeOI = $request->cerca_eje_oi;
-        $cerca->esferaOD = $request->cerca_esfera_od; 
-        $cerca->esferaOI = $request->cerca_esfera_oi; 
-        $cerca->cilindroOD = $request->cerca_cilindro_od; 
-        $cerca->cilindroOI = $request->cerca_cilindro_oi;
-        $cerca->save(); 
-        $receta->cerca_id = $cerca->id;
-        $receta->save();
+        if(isset($request->cerca_eje_od)){
 
+            $lejos = new Lejos(); 
+            $lejos->ejeOD = $request->lejos_eje_od;
+            $lejos->ejeOI = $request->lejos_eje_oi;
+            $lejos->esferaOD = $request->lejos_esfera_od; 
+            $lejos->esferaOI = $request->lejos_esfera_oi; 
+            $lejos->cilindroOD = $request->lejos_cilindro_od; 
+            $lejos->cilindroOI = $request->lejos_cilindro_oi;        
+            $lejos->save(); 
+            $cerca = new Cerca(); 
+            $cerca->ejeOD = 0;
+            $cerca->ejeOI = 0;
+            $cerca->esferaOD = 0;
+            $cerca->esferaOI = 0;
+            $cerca->cilindroOD = 0;
+            $cerca->cilindroOI = 0;
+            $cerca->save(); 
+            $receta->lejos_id = $lejos->id; 
+            $receta->cerca_id = $cerca->id;
+            $receta->save();
+        }
+        
+
+        if(isset($request->cerca_eje_od)){
+            $lejos = new Lejos(); 
+            $lejos->ejeOD = 0;
+            $lejos->ejeOI = 0;
+            $lejos->esferaOD = 0;
+            $lejos->esferaOI = 0;
+            $lejos->cilindroOD = 0;
+            $lejos->cilindroOI = 0;
+            $lejos->save(); 
+            $cerca = new Cerca(); 
+            $cerca->ejeOD = $request->cerca_eje_od;
+            $cerca->ejeOI = $request->cerca_eje_oi;
+            $cerca->esferaOD = $request->cerca_esfera_od; 
+            $cerca->esferaOI = $request->cerca_esfera_oi; 
+            $cerca->cilindroOD = $request->cerca_cilindro_od; 
+            $cerca->cilindroOI = $request->cerca_cilindro_oi;
+            $cerca->save(); 
+            $receta->lejos_id = $lejos->id; 
+            $receta->cerca_id = $cerca->id;
+            $receta->save();
+    
+        }
+        
         $recetas = Receta::all();
 
         return view('editar_recetas', ['recetas' => $recetas])->with('alert_success_edit_receta', 'true');
