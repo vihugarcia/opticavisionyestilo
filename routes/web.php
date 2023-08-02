@@ -115,6 +115,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/guardarcalibre', 'App\Http\Controllers\ConfiguracionController@guardarcalibre');
     Route::post('/guardarancho', 'App\Http\Controllers\ConfiguracionController@guardarancho');
     Route::post('/guardarlargo', 'App\Http\Controllers\ConfiguracionController@guardarlargo');
+    Route::post('/guardarmarca', 'App\Http\Controllers\ConfiguracionController@guardarmarca');
+    Route::post('/guardarcolor', 'App\Http\Controllers\ConfiguracionController@guardarcolor');
+    Route::post('/guardarmaterial', 'App\Http\Controllers\ConfiguracionController@guardarmaterial');
 
 
 });

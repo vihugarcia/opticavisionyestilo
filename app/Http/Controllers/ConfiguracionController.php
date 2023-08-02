@@ -14,10 +14,37 @@ use App\Models\Orden;
 use App\Models\Receta;
 use App\Models\Tipo_Cambio;
 use App\Models\Limite;
+use App\Models\Marca;
+use App\Models\Color;
+use App\Models\Material;
 
 
 class ConfiguracionController extends Controller
 {
+
+    public function guardarmarca(Request $request){
+        $marca = new Marca(); 
+        $marca->nombre = $request->marca;
+        $marca->codigo = $request->marca; 
+        $marca->orden = 1; 
+        $marca->save(); 
+        return redirect()->back()->with('success', 'true');
+    }
+
+    public function guardarcolor(Request $request){
+        $color = new Color(); 
+        $color->nombre = $request->color;      
+        $color->color = "#111111";
+        $color->save(); 
+        return redirect()->back()->with('success', 'true');
+    }
+
+    public function guardarmaterial(Request $request){
+        $material = new Material(); 
+        $material->nombre = $request->material;            
+        $material->save(); 
+        return redirect()->back()->with('success', 'true');
+    }
 
     public function guardartipocambio(Request $request){
         $tipo_cambio_blue = Tipo_Cambio::find($request->tipo_blue_id);

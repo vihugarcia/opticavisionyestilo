@@ -28,6 +28,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Kufam:ital,wght@1,900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="assets/zooming.min.js"></script>
+
+
 	
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -351,8 +354,7 @@
   </div>
 
 
-  
-  
+
 <script>
 
 	 $(document).ready(function(){

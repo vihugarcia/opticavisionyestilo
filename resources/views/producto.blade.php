@@ -11,23 +11,27 @@
         </ol>
       </nav>
 <div class="row" style="font-family: 'Titillium Web', sans-serif">
-    <div class=col-md-6>
+    <div class="col-md-6" style="height: 100%">
       <div class="swiper-overflow-container">
       <div class="swiper-container s3">
         <div class="swiper-wrapper">
           @if($producto->img1)
           
-          <div class="swiper-slide"><a role="button" data-toggle="modal" data-target="#modal-zoom-img1"><img style="width: 100%" src="img-products/{{$producto->img1}}"/></a></div>
+          <div class="swiper-slide">
+        
+            <img style="width: 100%" class="zoomE" src="img-products/{{$producto->img1}}"/>
+        </div>
+            
           
           @endif
           @if($producto->img2)
-          <div class="swiper-slide"><img style="width: 100%" src="img-products/{{$producto->img2}}"></div>
+          <div class="swiper-slide"><img style="width: 100%" class="" src="img-products/{{$producto->img2}}"></div>
           @endif
           @if($producto->img3)
-          <div class="swiper-slide"><img style="width: 100%" src="img-products/{{$producto->img3}}"></div>
+          <div class="swiper-slide"><img style="width: 100%" class="" src="img-products/{{$producto->img3}}"></div>
           @endif
           @if($producto->img4)
-          <div class="swiper-slide"><img style="width: 100%" src="img-products/{{$producto->img4}}"></div>
+          <div class="swiper-slide"><img style="width: 100%" class="" src="img-products/{{$producto->img4}}"></div>
           @endif         
         </div>
         <!-- Add Pagination -->
@@ -133,7 +137,7 @@
 
 
 <div id="modal-zoom-img1" class="modal fade" role="dialog">
-  <div class="modal-dialog" style="top: 15%">            
+  <div class="modal-dialog" style">            
     <!-- Modal content-->
     <div class="modal-content">
     <div class="modal-header bg-dark">
@@ -154,6 +158,34 @@
 src="https://code.jquery.com/jquery-3.5.1.min.js"
 integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
 crossorigin="anonymous"></script>
+
+<script>
+
+window.onload = () => {
+  // (A) GET ALL IMAGES
+  let all = document.getElementsByClassName("zoomE");
+ 
+  // (B) CLICK TO GO FULLSCREEN
+  if (all.length>0) { for (let i of all) {
+    i.onclick = () => {
+      // (B1) EXIT FULLSCREEN
+      if (document.fullscreenElement != null || document.webkitFullscreenElement != null) {
+        if (document.exitFullscreen) { document.exitFullscreen(); }
+        else { document.webkitCancelFullScreen(); }
+      }
+ 
+      // (B2) ENTER FULLSCREEN
+      else {
+        if (i.requestFullscreen) { i.requestFullscreen(); }
+        else { i.webkitRequestFullScreen(); }
+      }
+    };
+  }}
+};
+</script>
+
+
+  
 
 <script>
 
