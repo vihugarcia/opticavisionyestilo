@@ -188,6 +188,46 @@
 											</select>  
 										</div>
 									  </div>	
+
+									  <div class="form-group row">
+										<label for="marca" class="col-md-4 col-form-label text-md-right">Marca</label>
+										<div class="col-md-6">
+										<select id="marca" class="form-control" name="marca_id">
+										<option value="">Seleccionar marca</option>
+											<option selected value="{{$producto->marca->id}}">{{$producto->marca->nombre}}</option>
+											@foreach($marcas as $marca)                
+											  <option value={{$marca->id}}>{{$marca->nombre}}</option>
+											@endforeach
+										</select>
+									  </div>
+									</div>
+
+									<div class="form-group row">
+										<label for="color" class="col-md-4 col-form-label text-md-right">Color</label>
+										<div class="col-md-6">
+										<select id="color" class="form-control" name="color_id">
+										<option value="">Seleccionar color</option>
+											<option selected value="{{$producto->color->id}}">{{$producto->color->nombre}}</option>
+											@foreach($colores as $color)                
+											  <option value={{$color->id}}>{{$color->nombre}}</option>
+											@endforeach
+										</select>
+									  </div>
+									</div>
+
+									<div class="form-group row">
+										<label for="material" class="col-md-4 col-form-label text-md-right">Material</label>
+										<div class="col-md-6">
+										<select id="material" class="form-control" name="material_id">
+										<option value="">Seleccionar material</option>
+											<option selected value="{{$producto->material->id}}">{{$producto->material->nombre}}</option>
+											@foreach($materiales as $material)                
+											  <option value={{$material->id}}>{{$material->nombre}}</option>
+											@endforeach
+										</select>
+									  </div>
+									</div>
+								
 							
 									  <div class="form-group row">
 										<label for="name" class="col-md-4 col-form-label text-md-right">Código del Producto</label>

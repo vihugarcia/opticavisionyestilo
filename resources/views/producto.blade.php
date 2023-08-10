@@ -17,21 +17,39 @@
         <div class="swiper-wrapper">
           @if($producto->img1)
           
-          <div class="swiper-slide">
+          <div class="swiper-slide pswp-gallery" id="my-gallery">
         
-            <img style="width: 100%" class="zoomE" src="img-products/{{$producto->img1}}"/>
+
+            <a href="img-products/{{$producto->img1}}"  data-pswp-width="1875"
+              data-pswp-height="2500"
+              target="_blank"
+              >
+               <img style="width: 100%" class="zoomE" src="img-products/{{$producto->img1}}"/>
+              </a>
         </div>
             
           
           @endif
           @if($producto->img2)
-          <div class="swiper-slide"><img style="width: 100%" class="" src="img-products/{{$producto->img2}}"></div>
+          <div class="swiper-slide pswp-gallery" id="my-gallery">
+            <a href="img-products/{{$producto->img2}}"  data-pswp-width="1875" data-pswp-height="2500" target="_blank">
+               <img style="width: 100%" class="" src="img-products/{{$producto->img2}}">
+            </a>
+          </div>
           @endif
           @if($producto->img3)
-          <div class="swiper-slide"><img style="width: 100%" class="" src="img-products/{{$producto->img3}}"></div>
+          <div class="swiper-slide pswp-gallery" id="my-gallery">
+            <a href="img-products/{{$producto->img3}}"  data-pswp-width="1875" data-pswp-height="2500" target="_blank">
+               <img style="width: 100%" class="" src="img-products/{{$producto->img3}}">
+            </a>
+          </div>
           @endif
           @if($producto->img4)
-          <div class="swiper-slide"><img style="width: 100%" class="" src="img-products/{{$producto->img4}}"></div>
+          <div class="swiper-slide pswp-gallery" id="my-gallery">
+            <a href="img-products/{{$producto->img4}}"  data-pswp-width="1875" data-pswp-height="2500" target="_blank">
+               <img style="width: 100%" class="" src="img-products/{{$producto->img4}}">
+            </a>
+          </div>
           @endif         
         </div>
         <!-- Add Pagination -->
@@ -93,7 +111,12 @@
                       <tr>
                           <th>Forma</th>
                             <td>                        
-                                <span> {{$producto->forma_armazon->nombre}}</span>
+                                <span>@if($producto->forma_armazon != null) 
+                                      {{$producto->forma_armazon->nombre}}
+                                      @else
+                                      {{"Generica"}}
+                                      @endif
+                                    </span>
                             </td>                                       
                         </tr>
                   </tbody>
@@ -159,29 +182,17 @@ src="https://code.jquery.com/jquery-3.5.1.min.js"
 integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
 crossorigin="anonymous"></script>
 
-<script>
+<script type="module">
 
-window.onload = () => {
-  // (A) GET ALL IMAGES
-  let all = document.getElementsByClassName("zoomE");
- 
-  // (B) CLICK TO GO FULLSCREEN
-  if (all.length>0) { for (let i of all) {
-    i.onclick = () => {
-      // (B1) EXIT FULLSCREEN
-      if (document.fullscreenElement != null || document.webkitFullscreenElement != null) {
-        if (document.exitFullscreen) { document.exitFullscreen(); }
-        else { document.webkitCancelFullScreen(); }
-      }
- 
-      // (B2) ENTER FULLSCREEN
-      else {
-        if (i.requestFullscreen) { i.requestFullscreen(); }
-        else { i.webkitRequestFullScreen(); }
-      }
-    };
-  }}
-};
+import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
+
+const lightbox = new PhotoSwipeLightbox({
+  gallery: '#my-gallery',
+  children: 'a',
+  pswpModule: () => import('https://unpkg.com/photoswipe'),
+});
+
+lightbox.init();
 </script>
 
 

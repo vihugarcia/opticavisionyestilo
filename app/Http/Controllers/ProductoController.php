@@ -392,7 +392,10 @@ class ProductoController extends Controller
     {
         $producto = Producto::find($request->id);
 		$tipos_cambio = Tipo_Cambio::all();        
-        return view('editar_producto', ['tipos_cambio' => $tipos_cambio, 'producto' => $producto]);         
+		$colores = Color::all();
+		$marcas = Marca::all(); 
+		$materiales = Material::all();
+        return view('editar_producto', ['tipos_cambio' => $tipos_cambio, 'producto' => $producto, 'colores' => $colores, 'marcas' => $marcas, 'materiales' => $materiales]);         
     }
 
     public function eliminar_producto(Request $request)
