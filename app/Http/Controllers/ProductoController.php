@@ -483,11 +483,11 @@ class ProductoController extends Controller
 
 	  public function alta_producto(Request $request)
 	  {       
-			$categorias = Categoria::all();
+			$categorias = Categoria::orderby('Nombre', 'asc')->get();
 			$colores = Color::all();
-			$marcas = Marca::all();
+			$marcas = Marca::orderby('Nombre', 'asc')->get();
 			$formas = Forma_Armazon::all();
-			$materiales = Material::all();
+			$materiales = Material::orderby('Nombre', 'asc')->get();
 			$distancias = Distancia_Apto::all();
 			$tipos_cambio = Tipo_Cambio::all();
 		  	return view('alta_producto', 
