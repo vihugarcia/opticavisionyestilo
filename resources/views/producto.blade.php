@@ -93,8 +93,11 @@
                             <td> {{$producto->nombre}}</td>                   
                         </tr>
                       <tr>
-                        <th>Color</th>
-                          <td>{{$producto->color->nombre}}</td>                   
+                        <th>Color</th>                          
+                            @if($producto->color_texto != null)
+                              <td>{{$producto->color_texto}}</td>       
+                            @endif
+
                       </tr>
                       <tr>
                         <th>Largo Patillas</th>

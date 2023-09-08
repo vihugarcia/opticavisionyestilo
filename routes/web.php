@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'App\Http\Controllers\ProductoController@index');
+Route::get('/producto', 'App\Http\Controllers\ProductoController@product'); 
 // <!-- Productos (Lentes) -->
 
 Route::get('/dashboard', function () {
@@ -27,7 +28,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/productos', 'App\Http\Controllers\ProductoController@search');    
-    Route::get('/producto', 'App\Http\Controllers\ProductoController@product'); 
+
     Route::get('/cristal', 'App\Http\Controllers\CristalController@cristal')->name('cristal'); 
 
     Route::post('/alcarro', 'App\Http\Controllers\ProductoController@addtocart');
