@@ -442,11 +442,11 @@
 					var impuesto = $("#impuesto").val();
 					var ganancia = $("#ganancia").val();
 					var porcentaje = (costo * impuesto)/100;					
-					var subtotal = parseInt(costo) + parseInt(porcentaje);	
-					var porcentajeGanancia = (subtotal * ganancia)/100;
-					var total = parseInt(subtotal) + parseInt(porcentajeGanancia);	
-					var format = Math.round(total);							
-					$("#monto").val(format);
+					var subtotal = parseFloat(costo) + parseFloat(porcentaje);	
+					var porcentajeGanancia = (costo * ganancia)/100;
+					var total = parseFloat(subtotal) + parseFloat(porcentajeGanancia);	
+					var format = Math.round(total, 2);							
+					$("#monto").val(total.toFixed(2));
 			});
 			</script>
 

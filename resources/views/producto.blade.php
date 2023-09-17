@@ -14,14 +14,14 @@
     <div class="col-md-6" style="height: 100%">
       <div class="swiper-overflow-container">
       <div class="swiper-container s3">
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" id="my-gallery">
           @if($producto->img1)
           
-          <div class="swiper-slide pswp-gallery" id="my-gallery">
+          <div class="swiper-slide pswp-gallery" c>
         
 
-            <a href="img-products/{{$producto->img1}}"  data-pswp-width="1875"
-              data-pswp-height="2500"
+            <a href="img-products/{{$producto->img1}}"  data-pswp-width="3000"
+              data-pswp-height="1750"
               target="_blank"
               >
                <img style="width: 100%" class="zoomE" src="img-products/{{$producto->img1}}"/>
@@ -30,23 +30,26 @@
             
           
           @endif
-          @if($producto->img2)
+          @if($producto->img1)
           <div class="swiper-slide pswp-gallery" id="my-gallery">
-            <a href="img-products/{{$producto->img2}}"  data-pswp-width="1875" data-pswp-height="2500" target="_blank">
-               <img style="width: 100%" class="" src="img-products/{{$producto->img2}}">
+            <a href="img-products/{{$producto->img1}}"  data-pswp-width="3000"
+              data-pswp-height="1750" target="_blank">
+               <img style="width: 100%" class="" src="img-products/{{$producto->img1}}">
             </a>
           </div>
           @endif
           @if($producto->img3)
           <div class="swiper-slide pswp-gallery" id="my-gallery">
-            <a href="img-products/{{$producto->img3}}"  data-pswp-width="1875" data-pswp-height="2500" target="_blank">
+            <a href="img-products/{{$producto->img3}}"  data-pswp-width="3000"
+              data-pswp-height="1750" target="_blank">
                <img style="width: 100%" class="" src="img-products/{{$producto->img3}}">
             </a>
           </div>
           @endif
           @if($producto->img4)
           <div class="swiper-slide pswp-gallery" id="my-gallery">
-            <a href="img-products/{{$producto->img4}}"  data-pswp-width="1875" data-pswp-height="2500" target="_blank">
+            <a href="img-products/{{$producto->img4}}" data-pswp-width="3000"
+              data-pswp-height="1750" target="_blank">
                <img style="width: 100%" class="" src="img-products/{{$producto->img4}}">
             </a>
           </div>

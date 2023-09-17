@@ -16,8 +16,8 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "lightgallery": "^2.7.1",
         "photoswipe": "^5.3.8"
     },
     "type": "module"
-
 }
