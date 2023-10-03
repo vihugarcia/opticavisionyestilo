@@ -240,6 +240,11 @@ class ProductoController extends Controller
             $producto->save();
         }
 
+		if(!empty($request['tipo_fondo'])){
+            $producto->tipo_fondo = $request['tipo_fondo'];
+            $producto->save();
+        }
+
 		if(!empty($request['color_texto'])){
             $producto->color_texto = $request['color_texto'];
             $producto->save();
@@ -424,6 +429,7 @@ class ProductoController extends Controller
 		$product->nombre_base = $request['nombre_base'];
 		$product->categoria_id = $request['categoria_id'];
 		//$product->color_id = $request['color_id'];
+		$product->tipo_fondo = $request['tipo_fondo'];
 		$product->color_texto = $request['color_texto'];
 		$product->marca_id = $request['marca_id'];
 		$product->forma_armazon_id = $request['forma_id'];

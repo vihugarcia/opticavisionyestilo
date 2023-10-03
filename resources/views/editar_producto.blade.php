@@ -208,6 +208,23 @@
 										  <input id="name" type="text" @if($producto->color_texto) value="{{$producto->color_texto}}" @endif class="form-control" name="color_texto" required >              
 										</div>
 									  </div>
+
+									  <div class="form-group row">
+										<label for="marca" class="col-md-4 col-form-label text-md-right">Tipo de fondo 	@if($producto->tipo_fondo != null) 
+											 @if($producto->tipo_fondo == 1) <b>(Ninguno)</b> @endif
+											 @if($producto->tipo_fondo == 2) <b>(Fondo gris claro)</b> @endif
+											 @if($producto->tipo_fondo == 3) <b>(Fondo gris oscuro)</b> @endif
+											 @if($producto->tipo_fondo == 4) <b>(Fondo oscuro)</b> @endif
+										@endif		</label>
+										<div class="col-md-6">
+										<select id="marca" class="form-control" name="tipo_fondo">																																
+											<option value="1" >Ninguno</option>
+											<option value="2" >Fondo gris claro</option>
+											<option value="3" >Fondo gris oscuro</option>
+											<option value="4" >Fondo oscuro</option>					             					
+										</select>
+									  </div>
+									</div>
 							
 									<div class="form-group row">
 										<label for="material" class="col-md-4 col-form-label text-md-right">Material</label>

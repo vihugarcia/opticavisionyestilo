@@ -17,24 +17,57 @@
         <div class="swiper-wrapper" id="my-gallery">
           @if($producto->img1)
           
-          <div class="swiper-slide pswp-gallery" c>
+          <div class="swiper-slide pswp-gallery">
         
 
-            <a href="img-products/{{$producto->img1}}"  data-pswp-width="3000"
-              data-pswp-height="1750"
-              target="_blank"
-              >
-               <img style="width: 100%" class="zoomE" src="img-products/{{$producto->img1}}"/>
+            <a href="img-products/{{$producto->img1}}"  data-pswp-width="3000" data-pswp-height="1750" target="_blank">
+               <img 
+               @if($producto->tipo_fondo != null) 
+                  @if($producto->tipo_fondo == 1) 
+                    style="width:100%;" 
+                  @endif
+                  @if($producto->tipo_fondo == 2) 
+                    style="width:100%; filter: brightness(1.1)" 
+                  @endif
+                  @if($producto->tipo_fondo == 3) 
+                    style="width:100%; filter: brightness(1.2)" 
+                  @endif
+                  @if($producto->tipo_fondo == 4) 
+                    style="width:100%; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+                  @endif
+              @endif
+              @if($producto->tipo_fondo == null) 
+                style="width:100%;" 
+              @endif	
+               
+               src="img-products/{{$producto->img1}}"/>
               </a>
         </div>
             
           
           @endif
-          @if($producto->img1)
+          @if($producto->img2)
           <div class="swiper-slide pswp-gallery" id="my-gallery">
-            <a href="img-products/{{$producto->img1}}"  data-pswp-width="3000"
+            <a href="img-products/{{$producto->img2}}"  data-pswp-width="3000"
               data-pswp-height="1750" target="_blank">
-               <img style="width: 100%" class="" src="img-products/{{$producto->img1}}">
+               <img  @if($producto->tipo_fondo != null) 
+               @if($producto->tipo_fondo == 1) 
+                 style="width:100%;" 
+               @endif
+               @if($producto->tipo_fondo == 2) 
+                 style="width:100%; filter: brightness(1.1)" 
+               @endif
+               @if($producto->tipo_fondo == 3) 
+                 style="width:100%; filter: brightness(1.2)" 
+               @endif
+               @if($producto->tipo_fondo == 4) 
+                 style="width:100%; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+               @endif
+           @endif
+           @if($producto->tipo_fondo == null) 
+             style="width:100%;" 
+           @endif	
+            src="img-products/{{$producto->img2}}">
             </a>
           </div>
           @endif
@@ -42,7 +75,24 @@
           <div class="swiper-slide pswp-gallery" id="my-gallery">
             <a href="img-products/{{$producto->img3}}"  data-pswp-width="3000"
               data-pswp-height="1750" target="_blank">
-               <img style="width: 100%" class="" src="img-products/{{$producto->img3}}">
+               <img  @if($producto->tipo_fondo != null) 
+               @if($producto->tipo_fondo == 1) 
+                 style="width:100%;" 
+               @endif
+               @if($producto->tipo_fondo == 2) 
+                 style="width:100%; filter: brightness(1.1)" 
+               @endif
+               @if($producto->tipo_fondo == 3) 
+                 style="width:100%; filter: brightness(1.2)" 
+               @endif
+               @if($producto->tipo_fondo == 4) 
+                 style="width:100%; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+               @endif
+           @endif
+           @if($producto->tipo_fondo == null) 
+             style="width:100%;" 
+           @endif	
+            src="img-products/{{$producto->img3}}">
             </a>
           </div>
           @endif
@@ -50,7 +100,24 @@
           <div class="swiper-slide pswp-gallery" id="my-gallery">
             <a href="img-products/{{$producto->img4}}" data-pswp-width="3000"
               data-pswp-height="1750" target="_blank">
-               <img style="width: 100%" class="" src="img-products/{{$producto->img4}}">
+               <img  @if($producto->tipo_fondo != null) 
+               @if($producto->tipo_fondo == 1) 
+                 style="width:100%;" 
+               @endif
+               @if($producto->tipo_fondo == 2) 
+                 style="width:100%; filter: brightness(1.1)" 
+               @endif
+               @if($producto->tipo_fondo == 3) 
+                 style="width:100%; filter: brightness(1.2)" 
+               @endif
+               @if($producto->tipo_fondo == 4) 
+                 style="width:100%; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+               @endif
+           @endif
+           @if($producto->tipo_fondo == null) 
+             style="width:100%;" 
+           @endif	
+            src="img-products/{{$producto->img4}}">
             </a>
           </div>
           @endif         

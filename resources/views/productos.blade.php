@@ -84,16 +84,84 @@ Use App\Models\Receta;
               <div class="swiper-container s2">                
                   <div class="swiper-wrapper">
                       @if($product->img1)
-                      <div class="swiper-slide"><img style="width:100%; height: 30vh" src="/img-products/{{$product->img1}}"></div>
+                      <div class="swiper-slide"><img 	@if($product->tipo_fondo != null) 
+                        @if($product->tipo_fondo == 1) 
+                          style="width:100%;height: 30vh;" 
+                        @endif
+                        @if($product->tipo_fondo == 2) 
+                          style="width:100%;height: 30vh; filter: brightness(1.1)" 
+                        @endif
+                        @if($product->tipo_fondo == 3) 
+                          style="width:100%;height: 30vh; filter: brightness(1.2)" 
+                        @endif
+                        @if($product->tipo_fondo == 4) 
+                          style="width:100%;height: 30vh; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+                        @endif
+                      @endif
+                      @if($product->tipo_fondo == null) 
+                        style="width:100%;height: 30vh;" 
+                      @endif	
+                      src="/img-products/{{$product->img1}}"></div>
                       @endif
                       @if($product->img2)
-                      <div class="swiper-slide"><img style="width:100%; height: 30vh" src="/img-products/{{$product->img2}}"></div>	
+                      <div class="swiper-slide"><img 	@if($product->tipo_fondo != null) 
+                        @if($product->tipo_fondo == 1) 
+                          style="width:100%;height: 30vh;" 
+                        @endif
+                        @if($product->tipo_fondo == 2) 
+                          style="width:100%;height: 30vh; filter: brightness(1.1)" 
+                        @endif
+                        @if($product->tipo_fondo == 3) 
+                          style="width:100%;height: 30vh; filter: brightness(1.2)" 
+                        @endif
+                        @if($product->tipo_fondo == 4) 
+                          style="width:100%;height: 30vh; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+                        @endif
+                      @endif
+                      @if($product->tipo_fondo == null) 
+                        style="width:100%;height: 30vh;" 
+                      @endif	
+                       src="/img-products/{{$product->img2}}"></div>	
                       @endif
                       @if($product->img3)
-                      <div class="swiper-slide"><img style="width:100%; height: 30vh" src="/img-products/{{$product->img3}}"></div>									
+                      <div class="swiper-slide"><img 	@if($product->tipo_fondo != null) 
+                        @if($product->tipo_fondo == 1) 
+                          style="width:100%;height: 30vh;" 
+                        @endif
+                        @if($product->tipo_fondo == 2) 
+                          style="width:100%;height: 30vh; filter: brightness(1.1)" 
+                        @endif
+                        @if($product->tipo_fondo == 3) 
+                          style="width:100%;height: 30vh; filter: brightness(1.2)" 
+                        @endif
+                        @if($product->tipo_fondo == 4) 
+                          style="width:100%;height: 30vh; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+                        @endif
+                      @endif
+                      @if($product->tipo_fondo == null) 
+                        style="width:100%;height: 30vh;" 
+                      @endif	
+                       src="/img-products/{{$product->img3}}"></div>									
                       @endif
                       @if($product->img4)
-                      <div class="swiper-slide"><img style="width:100%; height: 30vh" src="/img-products/{{$product->img4}}"></div>										
+                      <div class="swiper-slide"><img 	@if($product->tipo_fondo != null) 
+                        @if($product->tipo_fondo == 1) 
+                          style="width:100%;height: 30vh;" 
+                        @endif
+                        @if($product->tipo_fondo == 2) 
+                          style="width:100%;height: 30vh; filter: brightness(1.1)" 
+                        @endif
+                        @if($product->tipo_fondo == 3) 
+                          style="width:100%;height: 30vh; filter: brightness(1.2)" 
+                        @endif
+                        @if($product->tipo_fondo == 4) 
+                          style="width:100%;height: 30vh; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+                        @endif
+                      @endif
+                      @if($product->tipo_fondo == null) 
+                        style="width:100%;height: 30vh;" 
+                      @endif	
+                       src="/img-products/{{$product->img4}}"></div>										
                       @endif
                       
                   </div>
