@@ -384,33 +384,54 @@
 									  </div>
 							
 									  <div class="form-group row">
-										<label for="name" class="col-md-4 col-form-label text-md-right">Costo</label>
+										<label for="costo" class="col-md-4 col-form-label text-md-right">Costo</label>
 										<div class="col-md-6">
-											<input id="name" type="number" class="form-control" value="{{$producto->costo}}" name="Costo" >              
+											<input id="costo" type="number" class="form-control" value="{{$producto->costo}}" name="Costo" >              
 										</div>
 									 </div>
 							
 									 <div class="form-group row">
-									  <label for="name" class="col-md-4 col-form-label text-md-right">Impuesto (%)</label>
+									  <label for="impuesto" class="col-md-4 col-form-label text-md-right">Impuesto (%)</label>
 									  <div class="col-md-6">
-										  <input id="name" type="number" class="form-control" value="{{$producto->impuesto}}" name="impuesto" >              
+										  <input id="impuesto" type="number" class="form-control" value="{{$producto->impuesto}}" name="impuesto" >              
 									  </div>
 								   </div>
 							
 								   <div class="form-group row">
-									<label for="name" class="col-md-4 col-form-label text-md-right">Ganancia</label>
+									<label for="ganancia" class="col-md-4 col-form-label text-md-right">Ganancia</label>
 									<div class="col-md-6">
-										<input id="name" type="number" class="form-control" value="{{$producto->ganancia}}" name="ganancia" >              
+										<input id="ganancia" type="number" class="form-control" value="{{$producto->ganancia}}" name="ganancia" >              
 									</div>
 									</div>
 									
 							
-									<div class="form-group row">
-									  <label for="name" class="col-md-4 col-form-label text-md-right">Monto</label>
+									<div class="form-group row" id="div-monto">
+									  <label for="monto" class="col-md-4 col-form-label text-md-right">Monto</label>
 									  <div class="col-md-6">
-										  <input id="name" type="number" class="form-control" value="{{$producto->monto}}" name="monto" >              
+										  <input id="monto" type="number" class="form-control" value="{{$producto->monto}}" name="monto" >              
 									  </div>
 								   </div>
+
+
+								   <script
+								   src="https://code.jquery.com/jquery-3.5.1.min.js"
+								   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+								   crossorigin="anonymous"></script>
+											<script>
+											 
+								 
+											 $( "#div-monto" ).click(function() {
+													 var costo =  $("#costo").val();
+													 var impuesto = $("#impuesto").val();
+													 var ganancia = $("#ganancia").val();
+													 var porcentaje = (costo * impuesto)/100;					
+													 var subtotal = parseFloat(costo) + parseFloat(porcentaje);	
+													 var porcentajeGanancia = (costo * ganancia)/100;
+													 var total = parseFloat(subtotal) + parseFloat(porcentajeGanancia);	
+													 var format = Math.round(total, 2);							
+													 $("#monto").val(total.toFixed(2));
+											 });
+											 </script>
 
 								   <div class="form-group row">
 									<label for="cambio_id" class="col-md-4 col-form-label text-md-right">Tipo de Cambio</label>
@@ -519,154 +540,7 @@
 							</div>
 					</main>		
 				</div>
-			</div>
-
-	<script src="js/app.js"></script>
-
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
-			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-			gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
-			gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
-			// Line chart
-			new Chart(document.getElementById("chartjs-dashboard-line"), {
-				type: "line",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "Sales ($)",
-						fill: true,
-						backgroundColor: gradient,
-						borderColor: window.theme.primary,
-						data: [
-							2115,
-							1562,
-							1584,
-							1892,
-							1587,
-							1923,
-							2566,
-							2448,
-							2805,
-							3438,
-							2917,
-							3327
-						]
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					tooltips: {
-						intersect: false
-					},
-					hover: {
-						intersect: true
-					},
-					plugins: {
-						filler: {
-							propagate: false
-						}
-					},
-					scales: {
-						xAxes: [{
-							reverse: true,
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								stepSize: 1000
-							},
-							display: true,
-							borderDash: [3, 3],
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}]
-					}
-				}
-			});
-		});
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Pie chart
-			new Chart(document.getElementById("chartjs-dashboard-pie"), {
-				type: "pie",
-				data: {
-					labels: ["Chrome", "Firefox", "IE"],
-					datasets: [{
-						data: [4306, 3801, 1689],
-						backgroundColor: [
-							window.theme.primary,
-							window.theme.warning,
-							window.theme.danger
-						],
-						borderWidth: 5
-					}]
-				},
-				options: {
-					responsive: !window.MSInputMethodContext,
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					cutoutPercentage: 75
-				}
-			});
-		});
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Bar chart
-			new Chart(document.getElementById("chartjs-dashboard-bar"), {
-				type: "bar",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "This year",
-						backgroundColor: window.theme.primary,
-						borderColor: window.theme.primary,
-						hoverBackgroundColor: window.theme.primary,
-						hoverBorderColor: window.theme.primary,
-						data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-						barPercentage: .75,
-						categoryPercentage: .5
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					scales: {
-						yAxes: [{
-							gridLines: {
-								display: false
-							},
-							stacked: false,
-							ticks: {
-								stepSize: 20
-							}
-						}],
-						xAxes: [{
-							stacked: false,
-							gridLines: {
-								color: "transparent"
-							}
-						}]
-					}
-				}
-			});
-		});
-	</script>
-	
-
+			</div>	
 	<script
 	src="https://code.jquery.com/jquery-3.5.1.min.js"
 	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="

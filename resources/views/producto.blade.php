@@ -20,7 +20,7 @@
           <div class="swiper-slide pswp-gallery">
         
 
-            <a href="img-products/{{$producto->img1}}"  data-pswp-width="3000" data-pswp-height="1750" target="_blank">
+            <a href="img-products/{{$producto->img1}}"  data-pswp-width="2600" data-pswp-height="1750" target="_blank">
                <img 
                @if($producto->tipo_fondo != null) 
                   @if($producto->tipo_fondo == 1) 
@@ -48,7 +48,7 @@
           @endif
           @if($producto->img2)
           <div class="swiper-slide pswp-gallery" id="my-gallery">
-            <a href="img-products/{{$producto->img2}}"  data-pswp-width="3000"
+            <a href="img-products/{{$producto->img2}}"  data-pswp-width="2600"
               data-pswp-height="1750" target="_blank">
                <img  @if($producto->tipo_fondo != null) 
                @if($producto->tipo_fondo == 1) 
@@ -73,7 +73,7 @@
           @endif
           @if($producto->img3)
           <div class="swiper-slide pswp-gallery" id="my-gallery">
-            <a href="img-products/{{$producto->img3}}"  data-pswp-width="3000"
+            <a href="img-products/{{$producto->img3}}"  data-pswp-width="2600"
               data-pswp-height="1750" target="_blank">
                <img  @if($producto->tipo_fondo != null) 
                @if($producto->tipo_fondo == 1) 
@@ -98,7 +98,7 @@
           @endif
           @if($producto->img4)
           <div class="swiper-slide pswp-gallery" id="my-gallery">
-            <a href="img-products/{{$producto->img4}}" data-pswp-width="3000"
+            <a href="img-products/{{$producto->img4}}" data-pswp-width="2600"
               data-pswp-height="1750" target="_blank">
                <img  @if($producto->tipo_fondo != null) 
                @if($producto->tipo_fondo == 1) 
