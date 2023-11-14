@@ -191,6 +191,59 @@
 
 							</form>
 
+							<form method="POST" action="/guardarmarca" enctype="multipart/form-data">  
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">        
+								<h1 class="h3 mb-3">Agregar Marca</h1>
+								<div class="form-group row">
+									<label for="nombre_marca" class="col-md-4 col-form-label text-md-right"> Nombre de la marca </label>
+									<div class="col-md-6">
+										<input id="nombre_marca" type="text" class="form-control" name="marca">                
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-12" style="text-align: center">
+										<button type="submit" class="btn btn-secondary text-center">Guardar Marca</button>
+									</div>
+								</div>
+
+							</form>
+
+							<form method="POST" action="/guardarcolor" enctype="multipart/form-data">  
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">        
+								<h1 class="h3 mb-3">Agregar Color</h1>
+								<div class="form-group row">
+									<label for="nombre_color" class="col-md-4 col-form-label text-md-right"> Nombre del color</label>
+									<div class="col-md-6">
+										<input id="nombre_color" type="text" class="form-control" name="color">                
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-12" style="text-align: center">
+										<button type="submit" class="btn btn-secondary text-center">Guardar Color</button>
+									</div>
+								</div>
+
+							</form>
+
+
+							<form method="POST" action="/guardarmaterial" enctype="multipart/form-data">  
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">        
+								<h1 class="h3 mb-3">Agregar Material</h1>
+								<div class="form-group row">
+									<label for="nombre_material" class="col-md-4 col-form-label text-md-right"> Nombre del material</label>
+									<div class="col-md-6">
+										<input id="nombre_material" type="text" class="form-control" name="material">                
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-12" style="text-align: center">
+										<button type="submit" class="btn btn-secondary text-center">Guardar Material</button>
+									</div>
+								</div>
+
+							</form>
+
+
 							<form method="POST" action="/guardarcalibre" enctype="multipart/form-data">  
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">        
 

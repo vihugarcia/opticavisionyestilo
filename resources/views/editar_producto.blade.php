@@ -167,7 +167,7 @@
 									  <div class="form-group row">
 										  <label for="name" class="col-md-4 col-form-label text-md-right">Nombre (A mostrar)</label>
 										  <div class="col-md-6">
-											  <input id="name" type="text" value="{{$producto->nombre}}" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>                
+											  <input id="name" type="text" value="{{$producto->nombre}}" class="form-control"  name="name" value="{{ old('name') }}" required>                
 										  </div>
 									  </div>
 							
@@ -188,6 +188,57 @@
 											</select>  
 										</div>
 									  </div>	
+
+									  <div class="form-group row">
+										<label for="marca" class="col-md-4 col-form-label text-md-right">Marca</label>
+										<div class="col-md-6">
+										<select id="marca" class="form-control" name="marca_id">
+										<option value="">Seleccionar marca</option>
+											<option selected value="{{$producto->marca->id}}">{{$producto->marca->nombre}}</option>
+											@foreach($marcas as $marca)                
+											  <option value={{$marca->id}}>{{$marca->nombre}}</option>
+											@endforeach
+										</select>
+									  </div>
+									</div>
+
+									<div class="form-group row">
+										<label for="name" class="col-md-4 col-form-label text-md-right">Color</label>
+										<div class="col-md-6">
+										  <input id="name" type="text" @if($producto->color_texto) value="{{$producto->color_texto}}" @endif class="form-control" name="color_texto" required >              
+										</div>
+									  </div>
+
+									  <div class="form-group row">
+										<label for="marca" class="col-md-4 col-form-label text-md-right">Tipo de fondo 	@if($producto->tipo_fondo != null) 
+											 @if($producto->tipo_fondo == 1) <b>(Ninguno)</b> @endif
+											 @if($producto->tipo_fondo == 2) <b>(Fondo gris claro)</b> @endif
+											 @if($producto->tipo_fondo == 3) <b>(Fondo gris oscuro)</b> @endif
+											 @if($producto->tipo_fondo == 4) <b>(Fondo oscuro)</b> @endif
+										@endif		</label>
+										<div class="col-md-6">
+										<select id="marca" class="form-control" name="tipo_fondo">																																
+											<option value="1" >Ninguno</option>
+											<option value="2" >Fondo gris claro</option>
+											<option value="3" >Fondo gris oscuro</option>
+											<option value="4" >Fondo oscuro</option>					             					
+										</select>
+									  </div>
+									</div>
+							
+									<div class="form-group row">
+										<label for="material" class="col-md-4 col-form-label text-md-right">Material</label>
+										<div class="col-md-6">
+										<select id="material" class="form-control" name="material_id">
+										<option value="">Seleccionar material</option>
+											<option selected value="{{$producto->material->id}}">{{$producto->material->nombre}}</option>
+											@foreach($materiales as $material)                
+											  <option value={{$material->id}}>{{$material->nombre}}</option>
+											@endforeach
+										</select>
+									  </div>
+									</div>
+								
 							
 									  <div class="form-group row">
 										<label for="name" class="col-md-4 col-form-label text-md-right">Código del Producto</label>
@@ -201,14 +252,7 @@
 										<div class="col-md-6">
 										  <textarea type="text" class="form-control" name="description" placeholder="{{$producto->descripcion}}" value="{{$producto->descripcion}}"></textarea>
 										</div>
-									  </div>
-
-									  <div class="form-group row">
-										<label for="ancho_cara" class="col-md-4 col-form-label text-md-right">Ancho Cara</label>
-										<div class="col-md-6">
-											<input id="ancho_cara" type="number" class="form-control" value="{{$producto->ancho_cara}}" name="ancho_cara" required>              
-										</div>
-									 </div>
+									  </div>								
 							
 									  <div class="form-group row">
 										<label for="name" class="col-md-4 col-form-label text-md-right">Altas Graduaciones</label>
@@ -249,21 +293,21 @@
 									  <div class="form-group row">
 										<label for="name" class="col-md-4 col-form-label text-md-right">Calibre</label>
 										<div class="col-md-6">
-											<input id="name" type="number" class="form-control" value="{{$producto->calibre}}" name="calibre" required>              
+											<input id="name" type="number" class="form-control" value="{{$producto->calibre}}" name="calibre" >              
 										</div>
 									 </div>
 							
 									 <div class="form-group row">
 										<label for="name" class="col-md-4 col-form-label text-md-right">Largo Patillas</label>
 										<div class="col-md-6">
-										  <input id="name" type="number" class="form-control" value="{{$producto->largo_patillas}}" name="largo_patillas" required>              
+										  <input id="name" type="number" class="form-control" value="{{$producto->largo_patillas}}" name="largo_patillas" >              
 										</div>
 									  </div>
 
 									  <div class="form-group row">
 										<label for="altura_puente" class="col-md-4 col-form-label text-md-right">Altura Puente</label>
 										<div class="col-md-6">
-										  <input id="altura_puente" type="number" class="form-control" value="{{$producto->altura_puente}}" name="altura_puente" required>              
+										  <input id="altura_puente" type="number" class="form-control" value="{{$producto->altura_puente}}" name="altura_puente" >              
 										</div>
 									  </div>
 							
@@ -271,52 +315,123 @@
 									  <div class="form-group row">
 										<label for="name" class="col-md-4 col-form-label text-md-right">Sexo (M, F, U)</label>
 										<div class="col-md-6">
-										  <input id="name" type="text" class="form-control" name="sexo" value="{{$producto->sexo}}" required>              
+										  <input id="name" type="text" class="form-control" name="sexo" value="{{$producto->sexo}}" >              
+										</div>
+									  </div>
+
+									  <div class="form-group row">
+										<label class="col-md-4 col-form-label text-md-right">¿Pediátrico?</label>
+										
+										  <div class="form-check col-md-1">
+											<input class="form-check-input" type="radio" value="1" name="padiatrico" id="pediatricosi">
+											<label class="form-check-label" for="pediatricosi">
+											  Si
+											</label>
+										  </div>
+										  <div class="form-check col-md-1">
+											<input class="form-check-input" type="radio" value="0" name="padiatrico" id="pediatricono">
+											<label class="form-check-label" for="pediatricono">
+											 No
+											</label>
+										  </div>              
+									
+									  </div>		
+						
+									  <div class="form-group row" id="menordedosaños" style="display: none;">
+										<label for="menor" class="col-md-4 col-form-label text-md-right">¿Menor de 2 años?</label>
+										
+										  <div class="form-check col-md-1">
+											<input class="form-check-input" type="radio" value="1" name="menor" id="menorsi">
+											<label class="form-check-label" for="menorsi">
+											  Si
+											</label>
+										  </div>
+										  <div class="form-check col-md-1">
+											<input class="form-check-input" type="radio" value="0" name="menor" id="menorno">
+											<label class="form-check-label" for="menorno">
+											 No
+											</label>
+										  </div>              
+									
+									  </div>		
+							
+									  <div id="rango_etario_desde_div" class="form-group row">
+										<label for="name" class="col-md-4 col-form-label text-md-right">Rango etario desde (Años)</label>
+										<div class="col-md-6">
+											<input id="name" type="number" class="form-control" name="rango_etario_desde" >              
+										</div>
+									 </div>
+							
+									 <div id="rango_etario_hasta_div" class="form-group row">
+										<label for="name" class="col-md-4 col-form-label text-md-right">Rango etario hasta (Años)</label>
+										<div class="col-md-6">
+										  <input id="name" type="number" class="form-control" name="rango_etario_hasta" >              
+										</div>
+									  </div>
+						
+									  <div id="rango_etario_desde_meses" class="form-group row">
+										<label for="name" class="col-md-4 col-form-label text-md-right">Rango etario desde (Meses)</label>
+										<div class="col-md-6">
+											<input id="name" type="number" class="form-control" name="rango_etario_desde_meses" >              
+										</div>
+									 </div>
+							
+									 <div id="rango_etario_hasta_meses" class="form-group row">
+										<label for="name" class="col-md-4 col-form-label text-md-right">Rango etario hasta (Meses)</label>
+										<div class="col-md-6">
+										  <input id="name" type="number" class="form-control" name="rango_etario_hasta_meses" >              
 										</div>
 									  </div>
 							
 									  <div class="form-group row">
-										<label for="name" class="col-md-4 col-form-label text-md-right">Rango etario desde</label>
+										<label for="costo" class="col-md-4 col-form-label text-md-right">Costo</label>
 										<div class="col-md-6">
-											<input id="name" type="number" class="form-control" value="{{$producto->rango_etario_desde}}" name="rango_etario_desde" required>              
+											<input id="costo" type="number" class="form-control" value="{{$producto->costo}}" name="Costo" >              
 										</div>
 									 </div>
 							
 									 <div class="form-group row">
-										<label for="name" class="col-md-4 col-form-label text-md-right">Rango etario hasta</label>
-										<div class="col-md-6">
-										  <input id="name" type="number" class="form-control" value="{{$producto->rango_etario_hasta}}" name="rango_etario_hasta" required>              
-										</div>
-									  </div>
-							
-									  <div class="form-group row">
-										<label for="name" class="col-md-4 col-form-label text-md-right">Costo</label>
-										<div class="col-md-6">
-											<input id="name" type="number" class="form-control" value="{{$producto->costo}}" name="Costo" required>              
-										</div>
-									 </div>
-							
-									 <div class="form-group row">
-									  <label for="name" class="col-md-4 col-form-label text-md-right">Impuesto (%)</label>
+									  <label for="impuesto" class="col-md-4 col-form-label text-md-right">Impuesto (%)</label>
 									  <div class="col-md-6">
-										  <input id="name" type="number" class="form-control" value="{{$producto->impuesto}}" name="impuesto" required>              
+										  <input id="impuesto" type="number" class="form-control" value="{{$producto->impuesto}}" name="impuesto" >              
 									  </div>
 								   </div>
 							
 								   <div class="form-group row">
-									<label for="name" class="col-md-4 col-form-label text-md-right">Ganancia</label>
+									<label for="ganancia" class="col-md-4 col-form-label text-md-right">Ganancia</label>
 									<div class="col-md-6">
-										<input id="name" type="number" class="form-control" value="{{$producto->ganancia}}" name="ganancia" required>              
+										<input id="ganancia" type="number" class="form-control" value="{{$producto->ganancia}}" name="ganancia" >              
 									</div>
 									</div>
 									
 							
-									<div class="form-group row">
-									  <label for="name" class="col-md-4 col-form-label text-md-right">Monto</label>
+									<div class="form-group row" id="div-monto">
+									  <label for="monto" class="col-md-4 col-form-label text-md-right">Monto</label>
 									  <div class="col-md-6">
-										  <input id="name" type="number" class="form-control" value="{{$producto->monto}}" name="monto" required>              
+										  <input id="monto" type="number" class="form-control" value="{{$producto->monto}}" name="monto" >              
 									  </div>
 								   </div>
+
+
+								   <script
+								   src="https://code.jquery.com/jquery-3.5.1.min.js"
+								   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+								   crossorigin="anonymous"></script>
+											<script>
+											 
+								 
+											 $( "#div-monto" ).click(function() {
+													 var costo =  $("#costo").val();
+													 var impuesto = $("#impuesto").val();
+													 var ganancia = $("#ganancia").val();
+													 var porcentaje = (costo * impuesto)/100;					
+													 var subtotal = parseFloat(costo) + parseFloat(porcentaje);	
+													 var porcentajeGanancia = (costo * ganancia)/100;
+													 var total = parseFloat(subtotal) + parseFloat(porcentajeGanancia);	
+													 var format = Math.round(total, 2);							
+													 $("#monto").val(total.toFixed(2));
+											 });
+											 </script>
 
 								   <div class="form-group row">
 									<label for="cambio_id" class="col-md-4 col-form-label text-md-right">Tipo de Cambio</label>
@@ -334,14 +449,14 @@
 								   <div class="form-group row">
 									<label for="name" class="col-md-4 col-form-label text-md-right">Monto Descuento</label>
 									<div class="col-md-6">
-										<input id="name" type="number" class="form-control" value="{{$producto->descuento}}" name="descuento" required>              
+										<input id="name" type="number" class="form-control" value="{{$producto->descuento}}" name="descuento" >              
 									</div>
 								   </div>
 							
 								   <div class="form-group row">
 									<label for="name" class="col-md-4 col-form-label text-md-right">Descuento (%)</label>
 									<div class="col-md-6">
-										<input id="name" type="number" class="form-control" value="{{$producto->descuento_porcentaje}}" name="descuento_porcentaje" required>              
+										<input id="name" type="number" class="form-control" value="{{$producto->descuento_porcentaje}}" name="descuento_porcentaje" >              
 									</div>
 								   </div>
 							
@@ -385,7 +500,7 @@
 								  <div class="form-group row">
 									<label for="name" class="col-md-4 col-form-label text-md-right">Stock (Cantidad del mismo articulo)</label>
 									<div class="col-md-6">
-										<input id="name" type="number" class="form-control" value="{{$producto->stock}}" name="stock" required>              
+										<input id="name" type="number" class="form-control" value="{{$producto->stock}}" name="stock" >              
 									</div>
 								 </div>
 								  
@@ -425,231 +540,67 @@
 							</div>
 					</main>		
 				</div>
-			</div>
+			</div>	
+	<script
+	src="https://code.jquery.com/jquery-3.5.1.min.js"
+	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+	crossorigin="anonymous"></script>
 
-	<script src="js/app.js"></script>
+	<script>
+		$("#pediatricosi").on( 'change', function() {
+			if( $(this).is(':checked') ) {
+				$("#distancia_apto").hide('slow');
+				$("#forma_armazon").hide('slow');
+				$("#ancho_cara_div").hide('slow');
+				$("#altas_graduaciones").hide('slow');
+				$("#plaquetas_ajustables").hide('slow');
+				$("#calibre").hide('slow');
+				$("#largo_patillas_div").hide('slow');
+				$("#altura_puente_div").hide('slow');
+				$("#sexo").hide('slow');
+				$("#menordedosaños").show('slow');								
+			}
+		});
 
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
-			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-			gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
-			gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
-			// Line chart
-			new Chart(document.getElementById("chartjs-dashboard-line"), {
-				type: "line",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "Sales ($)",
-						fill: true,
-						backgroundColor: gradient,
-						borderColor: window.theme.primary,
-						data: [
-							2115,
-							1562,
-							1584,
-							1892,
-							1587,
-							1923,
-							2566,
-							2448,
-							2805,
-							3438,
-							2917,
-							3327
-						]
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					tooltips: {
-						intersect: false
-					},
-					hover: {
-						intersect: true
-					},
-					plugins: {
-						filler: {
-							propagate: false
-						}
-					},
-					scales: {
-						xAxes: [{
-							reverse: true,
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								stepSize: 1000
-							},
-							display: true,
-							borderDash: [3, 3],
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}]
-					}
-				}
-			});
+		$("#pediatricono").on( 'change', function() {
+			if( $(this).is(':checked') ) {
+				$("#distancia_apto").show('slow');
+				$("#forma_armazon").show('slow');
+				$("#ancho_cara_div").show('slow');
+				$("#altas_graduaciones").show('slow');
+				$("#plaquetas_ajustables").show('slow');
+				$("#calibre").show('slow');
+				$("#largo_patillas_div").show('slow');
+				$("#altura_puente_div").show('slow');
+				$("#sexo").show('slow');
+				$("#rango_etario_desde_div").hide('slow');
+				$("#rango_etario_hasta_div").hide('slow');
+				$("#rango_etario_desde_meses").hide('slow');
+				$("#rango_etario_hasta_meses").hide('slow');
+				$("#menordedosaños").hide('slow');				
+			}
 		});
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Pie chart
-			new Chart(document.getElementById("chartjs-dashboard-pie"), {
-				type: "pie",
-				data: {
-					labels: ["Chrome", "Firefox", "IE"],
-					datasets: [{
-						data: [4306, 3801, 1689],
-						backgroundColor: [
-							window.theme.primary,
-							window.theme.warning,
-							window.theme.danger
-						],
-						borderWidth: 5
-					}]
-				},
-				options: {
-					responsive: !window.MSInputMethodContext,
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					cutoutPercentage: 75
-				}
-			});
+
+		$("#menorsi").on( 'change', function() {
+			if( $(this).is(':checked') ) {
+				$("#rango_etario_desde_meses").show('slow');
+				$("#rango_etario_hasta_meses").show('slow');
+				$("#rango_etario_desde_div").hide('slow');
+				$("#rango_etario_hasta_div").hide('slow');
+			}
 		});
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Bar chart
-			new Chart(document.getElementById("chartjs-dashboard-bar"), {
-				type: "bar",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "This year",
-						backgroundColor: window.theme.primary,
-						borderColor: window.theme.primary,
-						hoverBackgroundColor: window.theme.primary,
-						hoverBorderColor: window.theme.primary,
-						data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-						barPercentage: .75,
-						categoryPercentage: .5
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					scales: {
-						yAxes: [{
-							gridLines: {
-								display: false
-							},
-							stacked: false,
-							ticks: {
-								stepSize: 20
-							}
-						}],
-						xAxes: [{
-							stacked: false,
-							gridLines: {
-								color: "transparent"
-							}
-						}]
-					}
-				}
-			});
+
+		$("#menorno").on( 'change', function() {
+			if( $(this).is(':checked') ) {
+				$("#rango_etario_desde_meses").hide('slow');
+				$("#rango_etario_hasta_meses").hide('slow');
+				$("#rango_etario_desde_div").show('slow');
+				$("#rango_etario_hasta_div").show('slow');
+			}
 		});
+				
 	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			var markers = [{
-					coords: [31.230391, 121.473701],
-					name: "Shanghai"
-				},
-				{
-					coords: [28.704060, 77.102493],
-					name: "Delhi"
-				},
-				{
-					coords: [6.524379, 3.379206],
-					name: "Lagos"
-				},
-				{
-					coords: [35.689487, 139.691711],
-					name: "Tokyo"
-				},
-				{
-					coords: [23.129110, 113.264381],
-					name: "Guangzhou"
-				},
-				{
-					coords: [40.7127837, -74.0059413],
-					name: "New York"
-				},
-				{
-					coords: [34.052235, -118.243683],
-					name: "Los Angeles"
-				},
-				{
-					coords: [41.878113, -87.629799],
-					name: "Chicago"
-				},
-				{
-					coords: [51.507351, -0.127758],
-					name: "London"
-				},
-				{
-					coords: [40.416775, -3.703790],
-					name: "Madrid "
-				}
-			];
-			var map = new jsVectorMap({
-				map: "world",
-				selector: "#world_map",
-				zoomButtons: true,
-				markers: markers,
-				markerStyle: {
-					initial: {
-						r: 9,
-						strokeWidth: 7,
-						stokeOpacity: .4,
-						fill: window.theme.primary
-					},
-					hover: {
-						fill: window.theme.primary,
-						stroke: window.theme.primary
-					}
-				},
-				zoomOnScroll: false
-			});
-			window.addEventListener("resize", () => {
-				map.updateSize();
-			});
-		});
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
-			var defaultDate = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate();
-			document.getElementById("datetimepicker-dashboard").flatpickr({
-				inline: true,
-				prevArrow: "<span title=\"Previous month\">&laquo;</span>",
-				nextArrow: "<span title=\"Next month\">&raquo;</span>",
-				defaultDate: defaultDate
-			});
-		});
-	</script>
+
 
 </body>
 

@@ -240,6 +240,16 @@ class ProductoController extends Controller
             $producto->save();
         }
 
+		if(!empty($request['tipo_fondo'])){
+            $producto->tipo_fondo = $request['tipo_fondo'];
+            $producto->save();
+        }
+
+		if(!empty($request['color_texto'])){
+            $producto->color_texto = $request['color_texto'];
+            $producto->save();
+        }
+
 		if(!empty($request['marca_id'])){
             $producto->marca_id = $request['marca_id'];
             $producto->save();
@@ -392,7 +402,10 @@ class ProductoController extends Controller
     {
         $producto = Producto::find($request->id);
 		$tipos_cambio = Tipo_Cambio::all();        
-        return view('editar_producto', ['tipos_cambio' => $tipos_cambio, 'producto' => $producto]);         
+		$colores = Color::all();
+		$marcas = Marca::all(); 
+		$materiales = Material::all();
+        return view('editar_producto', ['tipos_cambio' => $tipos_cambio, 'producto' => $producto, 'colores' => $colores, 'marcas' => $marcas, 'materiales' => $materiales]);         
     }
 
     public function eliminar_producto(Request $request)
@@ -415,7 +428,9 @@ class ProductoController extends Controller
 		$product->nombre = $request['name'];
 		$product->nombre_base = $request['nombre_base'];
 		$product->categoria_id = $request['categoria_id'];
-		$product->color_id = $request['color_id'];
+		//$product->color_id = $request['color_id'];
+		$product->tipo_fondo = $request['tipo_fondo'];
+		$product->color_texto = $request['color_texto'];
 		$product->marca_id = $request['marca_id'];
 		$product->forma_armazon_id = $request['forma_id'];
 		$product->material_id = $request['material_id'];
@@ -423,7 +438,7 @@ class ProductoController extends Controller
 		$product->tipo_cambio_id = $request['cambio_id'];
 		$product->codigo = $request['codigo'];
 		$product->descripcion = $request['descripcion'];
-		$product->ancho_cara = $request['ancho_cara'];
+		$product->ancho_cara = 1;
 		$product->altas_graduaciones = $request['altas_graduaciones'];
 		$product->plaquetas_ajustables = $request['plaquetas_ajustables'];
 		$product->calibre = $request['calibre'];
@@ -480,11 +495,11 @@ class ProductoController extends Controller
 
 	  public function alta_producto(Request $request)
 	  {       
-			$categorias = Categoria::all();
+			$categorias = Categoria::orderby('Nombre', 'asc')->get();
 			$colores = Color::all();
-			$marcas = Marca::all();
+			$marcas = Marca::orderby('Nombre', 'asc')->get();
 			$formas = Forma_Armazon::all();
-			$materiales = Material::all();
+			$materiales = Material::orderby('Nombre', 'asc')->get();
 			$distancias = Distancia_Apto::all();
 			$tipos_cambio = Tipo_Cambio::all();
 		  	return view('alta_producto', 

@@ -9,7 +9,8 @@
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/optica.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/dashboard.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/dashboard.css') }}" rel="stylesheet">	
+	
 
 	<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch&display=swap" rel="stylesheet">
@@ -24,10 +25,12 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
 />
+	<link rel="stylesheet" href="https://unpkg.com/photoswipe@5.2.2/dist/photoswipe.css">
 	<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Kufam:ital,wght@1,900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="assets/zooming.min.js"></script>	
 	
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -240,6 +243,7 @@
 
 
 
+
 <style>
 	.swiper-slide {
   text-align: center;
@@ -351,8 +355,7 @@
   </div>
 
 
-  
-  
+
 <script>
 
 	 $(document).ready(function(){

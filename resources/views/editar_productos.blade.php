@@ -165,73 +165,38 @@
 						@endif
 
 						<div class="row">
+						<p class="buscador">
+							<label>Buscar producto:</label>
+							<input id="buscador" type="input" value="">
+						</p>
+						</div>
+
+						<div class="row">
 							<div class="col-12 col-lg-12 col-xxl-9 d-flex">
 								<div class="card flex-fill">
 									<div class="card-header">
 										<h5 class="card-title mb-0">Productos registrados</h5>
 									</div>
-									<table class="table table-hover my-0 table-responsive">
+									<table class="table table-hover my-0">
 										<thead>
 											<tr>
+											
 												<th>Nombre</th>
 												<th>Nombre técnico</th>
 												<th class="d-none d-xl-table-cell">Tipo</th>
-												<th class="d-none d-xl-table-cell">Código</th>		
-												<th class="">Descripción</th>						
-												<th class="">Ancho Cara</th>
-												<th class="">Altas Graduaciones</th>
-												<th class="">Plaquetas Ajustables</th>
-												<th class="">Calibre</th>
-												<th class="">Largo Patillas</th>
-												<th class="">Altura Puente</th>
-												<th class="">Sexo</th>
-												<th class="">Rango Etario Desde</th>
-												<th class="">Rango Etario Hasta</th>
-												<th class="">Costo</th>
-												<th class="">Impuesto</th>
-												<th class="">Monto</th>
-												<th class="">Descuento ($)</th>
-												<th class="">Descuento (%)</th>
-												<th class="">Destacado</th>
-												<th class="">Habilitado</th>
-												<th class="">Stock</th>
-												<th class="">Imagen 1</th>
-												<th class="">Imagen 2</th>
-												<th class="">Imagen 3</th>
-												<th class="">Imagen 4</th>
+												<th class="d-none d-xl-table-cell">Código</th>	
 												<th class="">Editar</th>
-												<th class="">Eliminar</th>
+												<th class="">Eliminar</th>																					
 											</tr>
 										</thead>
 										<tbody>
 											@foreach($productos as $producto)
-											<tr>
-												<td>{{$producto->nombre}}</td>
+											<tr class="item">
+											
+												<td class="nombres">{{$producto->nombre}}</td>
 												<td class="d-none d-xl-table-cell">{{$producto->nombre_base}}</td>
-												<td class="d-none d-xl-table-cell">{{$producto->tipo_producto_id}}</td>
-												<td>{{$producto->codigo}}</td>
-												<td>{{$producto->descripcion}}</td>
-												<td>{{$producto->ancho_cara}}</td>
-												<td>{{$producto->altas_graduaciones}}</td>
-												<td>{{$producto->plaquetas_ajustables}}</td>
-												<td>{{$producto->calibre}}</td>
-												<td>{{$producto->largo_patillas}}</td>
-												<td>{{$producto->altura_puente}}</td>
-												<td>{{$producto->sexo}}</td>
-												<td>{{$producto->rango_etario_desde}}</td>
-												<td>{{$producto->rango_etario_hasta}}</td>
-												<td>{{$producto->costo}}</td>
-												<td>{{$producto->impuesto}}</td>
-												<td>{{$producto->monto}}</td>
-												<td>{{$producto->descuento}}</td>
-												<td>{{$producto->descuento_porcentaje}}</td>
-												<td>{{$producto->destacado}}</td>
-												<td>{{$producto->habilitado}}</td>
-												<td>{{$producto->stock}}</td>
-												<td><img style="height: 30px" src="img-products/{{$producto->img1}}"></td>
-												<td><img style="height: 30px" src="img-products/{{$producto->img2}}"></td>
-												<td><img style="height: 30px" src="img-products/{{$producto->img3}}"></td>
-												<td><img style="height: 30px" src="img-products/{{$producto->img4}}"></td>
+												<td class="d-none d-xl-table-cell">{{$producto->tipo_producto}}</td>
+												<td>{{$producto->codigo}}</td>				
 												<td><form action="/editarproducto" method="POST">  
 													@csrf
 														<input type="hidden" value="{{$producto->id}}" name="id">	
@@ -240,13 +205,13 @@
 														</button>
 													</form>
 												</td>									
-												<td><form action="/eliminarproducto" method="POST">  @csrf
+												<td><form class="eliminar-form" action="/eliminarproducto" method="POST">  @csrf
 														<input type="hidden" value="{{$producto->id}}" name="id">	
 														<button style="border-radius: 2px;border: 1px solid gray;text-align: center;width: 50px;" type="submit">
 															<i style="color: red;" class="fa fa-trash" ></i>
 														</button>	
 													</form>														
-												</td>	
+												</td>																					
 											</tr>
 											@endforeach
 											
@@ -259,6 +224,38 @@
 			</div>
 
 	<script src="js/app.js"></script>
+	
+<script
+src="https://code.jquery.com/jquery-3.5.1.min.js"
+integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+crossorigin="anonymous"></script>
+
+	<script>
+		$(document).ready(function(){
+  $('#buscador').keyup(function(){
+     var nombres = $('.nombres');
+     var buscando = $(this).val();
+     var item='';
+     for( var i = 0; i < nombres.length; i++ ){
+         item = $(nombres[i]).html().toLowerCase();
+          for(var x = 0; x < item.length; x++ ){
+              if( buscando.length == 0 || item.indexOf( buscando ) > -1 ){
+                  $(nombres[i]).parents('.item').show(); 
+              }else{
+                   $(nombres[i]).parents('.item').hide();
+              }
+          }
+     }
+  });
+});
+
+$(".eliminar-form").submit(function() { 
+	if( !confirm('¿Está seguro que desea eliminar éste producto?') ){
+            event.preventDefault();
+        }         
+});
+
+</script>
 
 </body>
 

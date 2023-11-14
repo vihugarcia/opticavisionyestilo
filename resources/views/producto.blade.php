@@ -11,23 +11,115 @@
         </ol>
       </nav>
 <div class="row" style="font-family: 'Titillium Web', sans-serif">
-    <div class=col-md-6>
+    <div class="col-md-6" style="height: 100%">
       <div class="swiper-overflow-container">
       <div class="swiper-container s3">
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" id="my-gallery">
           @if($producto->img1)
           
-          <div class="swiper-slide"><a role="button" data-toggle="modal" data-target="#modal-zoom-img1"><img style="width: 100%" src="img-products/{{$producto->img1}}"/></a></div>
+          <div class="swiper-slide pswp-gallery">
+        
+
+            <a href="img-products/{{$producto->img1}}"  data-pswp-width="2600" data-pswp-height="1750" target="_blank">
+               <img 
+               @if($producto->tipo_fondo != null) 
+                  @if($producto->tipo_fondo == 1) 
+                    style="width:100%;" 
+                  @endif
+                  @if($producto->tipo_fondo == 2) 
+                    style="width:100%; filter: brightness(1.1)" 
+                  @endif
+                  @if($producto->tipo_fondo == 3) 
+                    style="width:100%; filter: brightness(1.2)" 
+                  @endif
+                  @if($producto->tipo_fondo == 4) 
+                    style="width:100%; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+                  @endif
+              @endif
+              @if($producto->tipo_fondo == null) 
+                style="width:100%;" 
+              @endif	
+               
+               src="img-products/{{$producto->img1}}"/>
+              </a>
+        </div>
+            
           
           @endif
           @if($producto->img2)
-          <div class="swiper-slide"><img style="width: 100%" src="img-products/{{$producto->img2}}"></div>
+          <div class="swiper-slide pswp-gallery" id="my-gallery">
+            <a href="img-products/{{$producto->img2}}"  data-pswp-width="2600"
+              data-pswp-height="1750" target="_blank">
+               <img  @if($producto->tipo_fondo != null) 
+               @if($producto->tipo_fondo == 1) 
+                 style="width:100%;" 
+               @endif
+               @if($producto->tipo_fondo == 2) 
+                 style="width:100%; filter: brightness(1.1)" 
+               @endif
+               @if($producto->tipo_fondo == 3) 
+                 style="width:100%; filter: brightness(1.2)" 
+               @endif
+               @if($producto->tipo_fondo == 4) 
+                 style="width:100%; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+               @endif
+           @endif
+           @if($producto->tipo_fondo == null) 
+             style="width:100%;" 
+           @endif	
+            src="img-products/{{$producto->img2}}">
+            </a>
+          </div>
           @endif
           @if($producto->img3)
-          <div class="swiper-slide"><img style="width: 100%" src="img-products/{{$producto->img3}}"></div>
+          <div class="swiper-slide pswp-gallery" id="my-gallery">
+            <a href="img-products/{{$producto->img3}}"  data-pswp-width="2600"
+              data-pswp-height="1750" target="_blank">
+               <img  @if($producto->tipo_fondo != null) 
+               @if($producto->tipo_fondo == 1) 
+                 style="width:100%;" 
+               @endif
+               @if($producto->tipo_fondo == 2) 
+                 style="width:100%; filter: brightness(1.1)" 
+               @endif
+               @if($producto->tipo_fondo == 3) 
+                 style="width:100%; filter: brightness(1.2)" 
+               @endif
+               @if($producto->tipo_fondo == 4) 
+                 style="width:100%; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+               @endif
+           @endif
+           @if($producto->tipo_fondo == null) 
+             style="width:100%;" 
+           @endif	
+            src="img-products/{{$producto->img3}}">
+            </a>
+          </div>
           @endif
           @if($producto->img4)
-          <div class="swiper-slide"><img style="width: 100%" src="img-products/{{$producto->img4}}"></div>
+          <div class="swiper-slide pswp-gallery" id="my-gallery">
+            <a href="img-products/{{$producto->img4}}" data-pswp-width="2600"
+              data-pswp-height="1750" target="_blank">
+               <img  @if($producto->tipo_fondo != null) 
+               @if($producto->tipo_fondo == 1) 
+                 style="width:100%;" 
+               @endif
+               @if($producto->tipo_fondo == 2) 
+                 style="width:100%; filter: brightness(1.1)" 
+               @endif
+               @if($producto->tipo_fondo == 3) 
+                 style="width:100%; filter: brightness(1.2)" 
+               @endif
+               @if($producto->tipo_fondo == 4) 
+                 style="width:100%; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+               @endif
+           @endif
+           @if($producto->tipo_fondo == null) 
+             style="width:100%;" 
+           @endif	
+            src="img-products/{{$producto->img4}}">
+            </a>
+          </div>
           @endif         
         </div>
         <!-- Add Pagination -->
@@ -71,8 +163,11 @@
                             <td> {{$producto->nombre}}</td>                   
                         </tr>
                       <tr>
-                        <th>Color</th>
-                          <td>{{$producto->color->nombre}}</td>                   
+                        <th>Color</th>                          
+                            @if($producto->color_texto != null)
+                              <td>{{$producto->color_texto}}</td>       
+                            @endif
+
                       </tr>
                       <tr>
                         <th>Largo Patillas</th>
@@ -89,7 +184,12 @@
                       <tr>
                           <th>Forma</th>
                             <td>                        
-                                <span> {{$producto->forma_armazon->nombre}}</span>
+                                <span>@if($producto->forma_armazon != null) 
+                                      {{$producto->forma_armazon->nombre}}
+                                      @else
+                                      {{"Generica"}}
+                                      @endif
+                                    </span>
                             </td>                                       
                         </tr>
                   </tbody>
@@ -133,7 +233,7 @@
 
 
 <div id="modal-zoom-img1" class="modal fade" role="dialog">
-  <div class="modal-dialog" style="top: 15%">            
+  <div class="modal-dialog" style">            
     <!-- Modal content-->
     <div class="modal-content">
     <div class="modal-header bg-dark">
@@ -154,6 +254,22 @@
 src="https://code.jquery.com/jquery-3.5.1.min.js"
 integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
 crossorigin="anonymous"></script>
+
+<script type="module">
+
+import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
+
+const lightbox = new PhotoSwipeLightbox({
+  gallery: '#my-gallery',
+  children: 'a',
+  pswpModule: () => import('https://unpkg.com/photoswipe'),
+});
+
+lightbox.init();
+</script>
+
+
+  
 
 <script>
 

@@ -68,75 +68,7 @@
                   </a>
                </div>
             </div>
-         </div>
-		  
-		  <div class="row mt-4">
-            <?php $products = [] ?>
-			  @foreach($products as $product)
-			  <div class="col-md-4 mt-2">
-				  <div class="card swiper-overflow-container">
-					
-					<div class="swiper-container s2">
-						<div class="swiper-wrapper">
-							@if($product->img1)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img1}}"></div>
-							@endif
-							@if($product->img2)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh " src="/img-products/{{$product->img2}}"></div>	
-							@endif
-							@if($product->img3)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img3}}"></div>									
-							@endif
-							@if($product->img4)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img4}}"></div>										
-							@endif
-							@if($product->img5)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img5}}"></div>										
-							@endif
-							@if($product->img6)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img6}}"></div>										
-							@endif
-							@if($product->img7)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img7}}"></div>										
-							@endif
-							@if($product->img8)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img8}}"></div>										
-							@endif
-							@if($product->img9)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img9}}"></div>										
-							@endif
-							@if($product->img10)
-							<div class="swiper-slide"><img style="width:100%<height: 30vh" src="/img-products/{{$product->img10}}"></div>										
-							@endif						  						 
-						</div>
-						<!-- Add Pagination -->
-						<div class="swiper-pagination2"></div>
-						<div class="swiper-button-next" style="color: black;"></div>
-						<div class="swiper-button-prev" style="color: black;"></div>
-					  </div>  					
-					<div class="card-body text-center">					
-					<p class="text-product-title"><a style="color: #676767;" href="/product?product_id={{$product->id}}">{{$product->name}}</a> @if($product->promo != 0)<small class="badge badge-dark badge-sm">{{$product->promo}}% OFF</small> @endif</p>
-					<p class="text-product-price">
-					
-					@if($product->promo != 0)					
-					<?php $porcentaje = 0; $price = 0;
-					$porcentaje = $product->price*$product->promo; 
-					$porcentaje = $porcentaje / 100;
-					$price = $product->price - $porcentaje; 											
-					?>
-					<span style="color: #bebebe; font-size: 12px;"><s>${{$product->price}}</s></span>
-					<span class="text-product-price">${{$price}}<span>		
-					@else
-					<span class="text-product-price">${{$product->price}}<span>					
-					@endif
-					</p>
-					</div>
-					
-				  </div>
-			  </div>
-			  @endforeach			
-			
-		  </div>
+         </div>		  		
 	  </div>
   </section>
 
@@ -152,16 +84,93 @@
 					<div class="swiper-container s2">
 						<div class="swiper-wrapper">
 							@if($product->img1)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img1}}"></div>
-							@endif
+							<div class="swiper-slide">
+								<img src="/img-products/{{$product->img1}}"
+									@if($product->tipo_fondo != null) 
+										@if($product->tipo_fondo == 1) 
+											style="width:100%;height: 30vh;" 
+										@endif
+										@if($product->tipo_fondo == 2) 
+											style="width:100%;height: 30vh; filter: brightness(1.1)" 
+										@endif
+										@if($product->tipo_fondo == 3) 
+											style="width:100%;height: 30vh; filter: brightness(1.2)" 
+										@endif
+										@if($product->tipo_fondo == 4) 
+											style="width:100%;height: 30vh; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+										@endif
+									@endif
+									@if($product->tipo_fondo == null) 
+										style="width:100%;height: 30vh;" 
+									@endif	
+									>	
+								</div>
+								@endif
 							@if($product->img2)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img2}}"></div>	
+							<div class="swiper-slide"><img src="/img-products/{{$product->img2}}"
+								@if($product->tipo_fondo != null) 
+										@if($product->tipo_fondo == 1) 
+											style="width:100%;height: 30vh;" 
+										@endif
+										@if($product->tipo_fondo == 2) 
+											style="width:100%;height: 30vh; filter: brightness(1.1)" 
+										@endif
+										@if($product->tipo_fondo == 3) 
+											style="width:100%;height: 30vh; filter: brightness(1.2)" 
+										@endif
+										@if($product->tipo_fondo == 4) 
+											style="width:100%;height: 30vh; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+										@endif
+									@endif
+									@if($product->tipo_fondo == null) 
+										style="width:100%;height: 30vh;" 
+									@endif	
+								>
+							</div>	
 							@endif
 							@if($product->img3)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img3}}"></div>									
+							<div class="swiper-slide"><img src="/img-products/{{$product->img3}}"
+								@if($product->tipo_fondo != null) 
+										@if($product->tipo_fondo == 1) 
+											style="width:100%;height: 30vh;" 
+										@endif
+										@if($product->tipo_fondo == 2) 
+											style="width:100%;height: 30vh; filter: brightness(1.1)" 
+										@endif
+										@if($product->tipo_fondo == 3) 
+											style="width:100%;height: 30vh; filter: brightness(1.2)" 
+										@endif
+										@if($product->tipo_fondo == 4) 
+											style="width:100%;height: 30vh; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+										@endif
+									@endif
+									@if($product->tipo_fondo == null) 
+										style="width:100%;height: 30vh;" 
+									@endif	
+								>
+							</div>									
 							@endif
 							@if($product->img4)
-							<div class="swiper-slide"><img style="width:100%;height: 30vh" src="/img-products/{{$product->img4}}"></div>										
+							<div class="swiper-slide"><img src="/img-products/{{$product->img4}}"
+									@if($product->tipo_fondo != null) 
+										@if($product->tipo_fondo == 1) 
+											style="width:100%;height: 30vh;" 
+										@endif
+										@if($product->tipo_fondo == 2) 
+											style="width:100%;height: 30vh; filter: brightness(1.1)" 
+										@endif
+										@if($product->tipo_fondo == 3) 
+											style="width:100%;height: 30vh; filter: brightness(1.2)" 
+										@endif
+										@if($product->tipo_fondo == 4) 
+											style="width:100%;height: 30vh; filter: contrast(98%) brightness(1.15) saturate(0.1);" 
+										@endif
+									@endif
+									@if($product->tipo_fondo == null) 
+										style="width:100%;height: 30vh;" 
+									@endif	
+								>
+							</div>										
 							@endif
 									  						 
 						</div>

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'App\Http\Controllers\ProductoController@index');
+Route::get('/producto', 'App\Http\Controllers\ProductoController@product'); 
 // <!-- Productos (Lentes) -->
 
 Route::get('/dashboard', function () {
@@ -27,7 +28,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/productos', 'App\Http\Controllers\ProductoController@search');    
-    Route::get('/producto', 'App\Http\Controllers\ProductoController@product'); 
+
     Route::get('/cristal', 'App\Http\Controllers\CristalController@cristal')->name('cristal'); 
 
     Route::post('/alcarro', 'App\Http\Controllers\ProductoController@addtocart');
@@ -115,6 +116,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/guardarcalibre', 'App\Http\Controllers\ConfiguracionController@guardarcalibre');
     Route::post('/guardarancho', 'App\Http\Controllers\ConfiguracionController@guardarancho');
     Route::post('/guardarlargo', 'App\Http\Controllers\ConfiguracionController@guardarlargo');
+    Route::post('/guardarmarca', 'App\Http\Controllers\ConfiguracionController@guardarmarca');
+    Route::post('/guardarcolor', 'App\Http\Controllers\ConfiguracionController@guardarcolor');
+    Route::post('/guardarmaterial', 'App\Http\Controllers\ConfiguracionController@guardarmaterial');
 
 
 });

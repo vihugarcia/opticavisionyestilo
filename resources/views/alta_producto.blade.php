@@ -202,14 +202,21 @@
 			  </div>
 			</div>
 
-			<div class="form-group row">
+			<div id="color_div" class="form-group row">
 				<label for="color" class="col-md-4 col-form-label text-md-right">Color</label>
 				<div class="col-md-6">
-				<select id="color" class="form-control" name="color_id">
-				<option value="">Seleccionar Color</option>
-					@foreach($colores as $color)                
-					  <option value={{$color->id}}>{{$color->nombre}}</option>
-					@endforeach
+					<input id="color" type="text" class="form-control" name="color_texto" >              
+				</div>
+			 </div>
+
+			 <div class="form-group row">
+				<label for="marca" class="col-md-4 col-form-label text-md-right">Tipo de fondo</label>
+				<div class="col-md-6">
+				<select id="marca" class="form-control" name="tipo_fondo">
+					<option value="1" selected>Ninguno</option>
+					<option value="2" >Fondo gris claro</option>
+					<option value="3" >Fondo gris oscuro</option>
+					<option value="4" >Fondo oscuro</option>					             					
 				</select>
 			  </div>
 			</div>
@@ -313,14 +320,7 @@
 					@endforeach
 				</select>
 			  </div>
-			</div>
-
-			  <div id="ancho_cara_div" class="form-group row">
-				<label for="ancho_cara" class="col-md-4 col-form-label text-md-right">Ancho Cara</label>
-				<div class="col-md-6">
-					<input id="ancho_cara" type="number" class="form-control" name="ancho_cara">              
-				</div>
-			 </div>
+			</div>			
 		
 			  <div id="altas_graduaciones" class="form-group row">
 				<label for="name" class="col-md-4 col-form-label text-md-right">Altas Graduaciones</label>			
@@ -362,6 +362,15 @@
 					<input id="name" type="number" class="form-control" name="calibre" >              
 				</div>
 			 </div>
+
+			 
+			<div id="altura_puente_div" class="form-group row">
+				<label for="altura_puente" class="col-md-4 col-form-label text-md-right">Puente</label>
+				<div class="col-md-6">
+					<input id="altura_puente" type="number" class="form-control" name="altura_puente" >              
+				</div>
+			 </div>
+
 	
 			 <div id="largo_patillas_div" class="form-group row">
 				<label for="largo_patillas" class="col-md-4 col-form-label text-md-right">Largo Patillas</label>
@@ -369,15 +378,7 @@
 					<input id="largo_patillas" type="number" class="form-control" name="largo_patillas" >              
 				</div>
 			 </div>
-
-			<div id="altura_puente_div" class="form-group row">
-				<label for="altura_puente" class="col-md-4 col-form-label text-md-right">Altura Puente</label>
-				<div class="col-md-6">
-					<input id="altura_puente" type="number" class="form-control" name="altura_puente" >              
-				</div>
-			 </div>
-	
-	
+		
 			  <div id="sexo" class="form-group row">
 				<label for="name" class="col-md-4 col-form-label text-md-right">Sexo (M, F, U)</label>
 				<div class="col-md-6">
@@ -453,11 +454,11 @@
 					var impuesto = $("#impuesto").val();
 					var ganancia = $("#ganancia").val();
 					var porcentaje = (costo * impuesto)/100;					
-					var subtotal = parseInt(costo) + parseInt(porcentaje);	
-					var porcentajeGanancia = (subtotal * ganancia)/100;
-					var total = parseInt(subtotal) + parseInt(porcentajeGanancia);	
-					var format = Math.round(total);							
-					$("#monto").val(format);
+					var subtotal = parseFloat(costo) + parseFloat(porcentaje);	
+					var porcentajeGanancia = (costo * ganancia)/100;
+					var total = parseFloat(subtotal) + parseFloat(porcentajeGanancia);	
+					var format = Math.round(total, 2);							
+					$("#monto").val(total.toFixed(2));
 			});
 			</script>
 
@@ -588,8 +589,10 @@
 				$("#largo_patillas_div").show('slow');
 				$("#altura_puente_div").show('slow');
 				$("#sexo").show('slow');
-				$("#rango_etario_desde_div").show('slow');
-				$("#rango_etario_hasta_div").show('slow');
+				$("#rango_etario_desde_div").hide('slow');
+				$("#rango_etario_hasta_div").hide('slow');
+				$("#rango_etario_desde_meses").hide('slow');
+				$("#rango_etario_hasta_meses").hide('slow');
 				$("#menordedosaños").hide('slow');				
 			}
 		});
