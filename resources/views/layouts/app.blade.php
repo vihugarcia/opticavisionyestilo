@@ -31,6 +31,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="assets/zooming.min.js"></script>	
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
 	
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -75,6 +78,36 @@
 		</script>
 		<?php session()->forget('error'); ?> 
 	@endif
+
+<style>
+#loading {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.904);
+    display: flex;
+    flex-direction: column; /* cambia la dirección del eje principal a columna */
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* centra el texto horizontalmente */
+}
+
+#loading img {
+    width: 50vh; /* puedes ajustar esto al tamaño que quieras */
+}
+
+#loading.done {
+    display: none;
+}
+
+</style>
+
+	  <div id="loading">
+		<img src="img/loading.gif" alt="Cargando..." />		>
+	</div>
 
 	<?php //session()->forget('carrito'); ?>
 	<div class="top-info">ENVÍOS A TODO EL PAÍS <img class="icon-info" src="img/camion.png"></div>
@@ -278,7 +311,7 @@
     });
 
 	var newSwiper = new Swiper('.s2', {
-      slidesPerView: 1,	 
+      slidesPerView: 1,	 	
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -365,6 +398,13 @@
 	 });
 
 	</script>
+
+<script>
+	window.addEventListener('load', function() {
+	var loading = document.getElementById('loading');
+	loading.classList.add('done');
+});
+</script>
 
 </body>
 </html>
